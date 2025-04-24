@@ -27,31 +27,26 @@
 </script>
 </head>
 <body>
+	<header> <nav> <a href="home.jsp">Inicio</a> <a
+		href="HomeController?action=produtoscadastro">Cadastro de Produtos</a>
+	<a href="HomeController?action=usuarioscadastro">Cadastro de
+		Usuários</a> </nav> </header>
 	<div class="container">
-		<h2>Cadastro de usuários</h2>
 		<div class="form-login">
-			<!-- Formulario com a ação para o servlet -->
+			<h2>Cadastro de usuários</h2>
 			<form action="UsuarioControl" method="POST" id="form">
-			
-				<input id="id" type="hidden" name="id" />
-				
-				<label for="email">Nome completo</label> 
-				<input type="text" id="nome" name="nome" required />
-				
-				<label for="email">Email</label>
-				<input type="email" id="email" name="email" required />
-				
-				<label for="senha">Senha</label>
-				<input type="password" id="senha" name="senha" required />
-				
-				<label for="">Telefone</label>
-				<input type="text" id="telefone" name="telefone" style="padding: 10px; border-radius: 5px; outline: 0; border: 1px solid #000;" required />
-				
-				<div style="display: flex; align-itens: center; margin-top: 10px;">
-					<input type="checkbox" id="status" name="status" />
-					<label for="status" style="margin-left: 5px; margin-top: 0">Ativo?</label>
+				<input id="id" type="hidden" name="id" /> <label for="email">Nome
+					completo</label> <input type="text" id="nome" name="nome" required /> <label
+					for="email">Email</label> <input type="email" id="email"
+					name="email" required /> <label for="senha">Senha</label> <input
+					type="password" id="senha" name="senha" required /> <label for="">Telefone</label>
+				<input type="text" id="telefone" name="telefone" required />
+
+				<div style="display: flex; align-items: center; margin-top: 10px;">
+					<input type="checkbox" id="status" name="status" /> <label
+						for="status" style="margin-left: 5px; margin-top: 0">Ativo?</label>
 				</div>
-				
+
 				<button type="submit" name="entrar" id="submit">Cadastre-se</button>
 			</form>
 
@@ -61,9 +56,11 @@
 				<a href="http://localhost:8081/app2025-A1/index.jsp"
 					class="cadastro">Fazer login</a>
 			</div>
+		</div>
 
-			<h2>Usuarios cadastrados</h2>
-			<table border="1">
+		<div class="tabela-produtos">
+			<h2>Usuários cadastrados</h2>
+			<table>
 				<tr>
 					<th>ID</th>
 					<th>Nome</th>
@@ -84,8 +81,10 @@
 					<td><%=usuario.getTelefone()%></td>
 					<td><%=usuario.isStatus() ? "Ativo" : "Inativo"%></td>
 					<td>
-						<button onClick="editarUsuario('<%=usuario.getId()%>', '<%=usuario.getNome()%>','<%=usuario.getEmail()%>','<%=usuario.getSenha()%>','<%=usuario.getTelefone()%>','<%=usuario.isStatus()%>')">Editar</button>
-						<button onClick="window.location.href='UsuarioControl?action=delete&id=<%=usuario.getId()%>'">Excluir</button>
+						<button
+							onClick="editarUsuario('<%=usuario.getId()%>', '<%=usuario.getNome()%>','<%=usuario.getEmail()%>','<%=usuario.getSenha()%>','<%=usuario.getTelefone()%>','<%=usuario.isStatus()%>')">Editar</button>
+						<button
+							onClick="window.location.href='UsuarioControl?action=delete&id=<%=usuario.getId()%>'">Excluir</button>
 					</td>
 				</tr>
 				<%
@@ -94,5 +93,6 @@
 			</table>
 		</div>
 	</div>
+
 </body>
 </html>

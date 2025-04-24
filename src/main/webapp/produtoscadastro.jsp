@@ -27,9 +27,16 @@
 </script>
 </head>
 <body>
+	<header>
+		<nav>
+			<a href="home.jsp">Inicio</a>
+			<a href="HomeController?action=produtoscadastro">Cadastro de Produtos</a>
+			<a href="HomeController?action=usuarioscadastro">Cadastro de Usuários</a>
+		</nav>
+	</header>
 	<div class="container">
-		<h2>Cadastro de produtos</h2>
 		<div class="form-login">
+			<h2>Cadastro de produtos</h2>
 			<!-- Formulario com a ação para o servlet -->
 			<form action="ProdutoControl" method="POST" id="form">
 
@@ -39,21 +46,17 @@
 				<textarea type="text" id="descricao" name="descricao" required></textarea>
 
 				<label for="senha">Marca</label> <input type="text" id="marca"
-					name="marca"
-					style="padding: 10px; border-radius: 5px; outline: 0; border: 1px solid #000;"
-					required /> <label for="">Valor Unitário</label> <input
-					type="text" id="valorUnitario" name="valorUnitario"
-					style="padding: 10px; border-radius: 5px; outline: 0; border: 1px solid #000;"
-					required />
+					name="marca" required /> <label for="">Valor Unitário</label> <input
+					type="text" id="valorUnitario" name="valorUnitario" required />
 
 				<div style="display: flex; align-itens: center; margin-top: 10px;">
 					<input type="checkbox" id="ativo" name="ativo" /> <label
 						for="status" style="margin-left: 5px; margin-top: 0">Ativo?</label>
 				</div>
-
 				<button type="submit" name="entrar" id="submit">Salvar</button>
 			</form>
-
+		</div>
+		<div class="tabela-produtos">
 			<h2>Produtos cadastrados</h2>
 			<table border="1">
 				<tr>
@@ -76,12 +79,16 @@
 					<td><%=produto.getDescricao()%></td>
 					<td><%=produto.getMarca()%></td>
 					<td><%=produto.getValorUnitario()%></td>
-					<td><%=produto.isAtivo()%></td>
+					<td><%=produto.isAtivo() ? "Ativo" : "Inativo"%></td>
 					<td>
 						<button
-							onClick="editarProduto('<%=produto.getId()%>', '<%=produto.getNome()%>','<%=produto.getDescricao()%>','<%=produto.getMarca()%>','<%=produto.getValorUnitario()%>','<%=produto.isAtivo()%>')">Editar</button>
-						<button
-							onClick="window.location.href='ProdutoControl?action=delete&id=<%=produto.getId()%>'">Excluir</button>
+							onClick="editarProduto('<%=produto.getId()%>', 
+							'<%=produto.getNome()%>',
+							'<%=produto.getDescricao()%>',
+							'<%=produto.getMarca()%>',
+							'<%=produto.getValorUnitario()%>',
+							'<%=produto.isAtivo()%>')">Editar</button>
+						<button onClick="window.location.href='ProdutoControl?action=delete&id=<%=produto.getId()%>'">Excluir</button>
 					</td>
 				</tr>
 				<%

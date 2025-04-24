@@ -15,13 +15,17 @@ import java.io.IOException;
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String action = request.getParameter("action");
 		System.out.println("----#" + action);
 
 		if ("usuarioscadastro".equals(action)) {
 			request.getRequestDispatcher("usuarioscadastro.jsp").forward(request, response);
+		}
+		if ("produtoscadastro".equals(action)) {
+			request.getRequestDispatcher("produtoscadastro.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
